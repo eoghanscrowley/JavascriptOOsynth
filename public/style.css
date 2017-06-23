@@ -1,0 +1,278 @@
+/* Load in fonts from Google fonts */
+@import url('https://fonts.googleapis.com/css?family=Righteous|Space+Mono');
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  height: 100px;
+  width: 100%;
+  background-color: tomato;
+}
+
+button:focus, select:focus, input:focus {
+  outline: none;
+}
+
+body {}
+
+h3, select, span {
+  font-family: 'Space Mono';
+}
+
+/* Holder for the whole oscillator */
+.synth-container {
+  margin: 10px;
+  width: 255px;
+  height: 235px;
+  background-color: RoyalBlue;
+  border-radius: 10px;
+  overflow: hidden;
+  display: inline-block;
+  box-shadow: inset 3px 3px 3px rgba(255, 255, 255, 0.2),
+    inset -3px -3px 3px rgba(0, 0, 0, 0.2),
+    0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Top banner to oscillator */
+.banner {
+  width: 100%;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 15px;
+}
+
+.banner h1 {
+  color: white;
+  font-family: Righteous;
+  float: left;
+  font-size: 20px;
+  margin-top: -5px;
+}
+
+.banner button {
+  cursor: pointer;
+  margin-left: 10px;
+  float: right;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.7);
+  font-size: 8px;
+  color: white;
+  font-weight: bold;
+}
+
+.banner button:active {
+  background-color: rgba(255, 255, 255, 0.4);
+  border-color: rgba(0, 0, 0, 0.4);
+}
+
+
+/* Controls container */
+.controls {
+  height: 155px;
+  width: 225px;
+  margin: 15px auto;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3),
+    -1px -1px 2px rgba(0, 0, 0, 0.3),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.3),
+    1px 1px 2px rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  position: relative;
+}
+
+
+/* General control styling */
+.controls > div {
+  box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.3),
+    inset -1px -1px 1px rgba(0, 0, 0, 0.3),
+    -1px -1px 1px rgba(255, 255, 255, 0.3),
+    1px 1px 1px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  border-radius: 3px;
+}
+
+/* Controls for selecting wave-type */
+.wave-type {
+  top: 5px;
+  left: 5px;
+  height: 60px;
+  width: 90px;
+  padding: 5px;
+}
+
+h3 {
+  font-size: 10px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.wave-type select {
+  cursor: pointer;
+  width: 80px;
+  height: 20px;
+  border-radius: 2px;
+  font-size: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid black;
+}
+
+/* ADSR controls */
+.adsr {
+  top: 70px;
+  left: 5px;
+  height: 80px;
+  width: 90px;
+}
+
+.sliders-container {
+  position: relative;
+  margin-left: -10px;
+}
+
+.adsr .labels {
+  position: absolute;
+  left: 7px;
+}
+
+.labels span {
+  margin: 0 5px;
+  font-size: 10px;
+}
+
+.sliders-container input {
+  position: absolute;
+  top: 40px;
+  appearance: none;
+  -webkit-appearance: none;
+  height: 10px;
+  width: 50px;
+  transform: rotate(270deg);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.sliders-container input:nth-child(2) {
+  left: 20px;
+}
+
+.sliders-container input:nth-child(3) {
+  left: 40px;
+}
+
+.sliders-container input:nth-child(4) {
+  left: 60px;
+}
+
+.sliders-container input::-webkit-slider-container {
+  border: 1px solid black;
+  background-color: transparent;
+}
+
+.sliders-container input::-webkit-slider-runnable-track {
+  background-color: transparent;
+}
+
+.sliders-container input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 8px;
+  width: 8px;
+  background-color: #000;
+  cursor: pointer;
+}
+
+/* detune controls */
+.detune {
+  position: absolute;
+  top: 5px;
+  left: 100px;
+  height: 40px;
+  width: 120px;
+  padding: 5px;
+}
+
+.detune .slider-container {
+  position: relative;
+  width: 100px;
+  height: 15px;
+  margin: 0 auto;
+}
+
+.detune input {
+  position: absolute;
+  top: -2px;
+  appearance: none;
+  -webkit-appearance: none;
+  height: 10px;
+  width: 100px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.detune input::-webkit-slider-container {
+  border: 1px solid black;
+  background-color: transparent;
+}
+
+.detune input::-webkit-slider-runnable-track {
+  background-color: transparent;
+}
+
+.detune input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 8px;
+  width: 8px;
+  background-color: #000;
+  cursor: pointer;
+}
+
+/* Input/OutPut controls */
+.io {
+  top: 50px;
+  left: 100px;
+  width: 120px;
+  height: 100px;
+}
+
+.io .slider-container {
+  position: relative;
+}
+
+.io input {
+  transform: rotate(270deg);
+  width: 70px;
+  position: absolute;
+  top: 30px;
+  left: -10px;
+  appearance: none;
+  -webkit-appearance: none;
+  height: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.io input::-webkit-slider-container {
+  border: 1px solid black;
+  background-color: transparent;
+}
+
+.io input::-webkit-slider-runnable-track {
+  
+}
+
+.io input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 8px;
+  width: 8px;
+  background-color: #000;
+  cursor: pointer;
+}
+
+.output-container {
+  
+}
