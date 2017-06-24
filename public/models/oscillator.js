@@ -26,6 +26,7 @@ var Oscillator = function(options) {
 	this.volume = options.volume || 0.7;
 	this.playing = false;
 	this.now = ctx.currentTime;
+	this.octave = options.octave || 0.5;
 
 }
 
@@ -68,6 +69,10 @@ Oscillator.prototype = {
 		console.log('inside setRelease');
 		this.release = Number(newValue);
 	},
+	checkForOctaveChange: function(operation) {
+		if (operation === '*') this.octave *= 2;
+		if (operation === '/') this.octave /= 2;
+	},
 	setADSR: function(newOpts) {
 		var newAttack = newOpts.attack || this.attack;
 		var newDecay = newOpts.decay || this.decay;
@@ -81,9 +86,9 @@ Oscillator.prototype = {
 	},
 	setFrequency: function(newFrequency) {
 		console.log('inside setFrequency')
-		this.frequency = newFrequency;
-		this.osc.frequency.setValueAtTime(newFrequency, this.now);
-		console.log('newFrequency', newFrequency);
+		this.frequency = newFrequency * this.octave;
+		this.osc.frequency.setValueAtTime(this.frequency, this.now);
+		console.log('newFrequency', this.frequency);
 	},
 	handleReset: function() {
 		console.log("inside handleReset");
@@ -139,6 +144,7 @@ Oscillator.prototype = {
 		}
 	},
 	handleKeyDown: function(freq) {
+		this.checkForOctaveChange(freq);
 		if (!this.playing && typeof freq === 'number') {
 			console.log("--------------------------------------------");
 			console.log("NOTE PRESSED");

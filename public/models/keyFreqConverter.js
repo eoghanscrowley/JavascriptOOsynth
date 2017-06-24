@@ -30,8 +30,8 @@ var convertKeycodeToFrequency = function(keyCode) {
     case 85: return notes['a-sharp'];
     case 74: return notes['b'];
     case 75: return notes['c2']
-    case 90: octave *= 0.5; break;
-    case 88: octave *= 2; break;
+    case 90: return '/';
+    case 88: return '*';
     default: break;
 	 }
 }

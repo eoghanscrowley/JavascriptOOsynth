@@ -247,7 +247,8 @@ var handleSave = function() {
 			decay: oscillator.decay,
 			sustain: oscillator.sustain,
 			release: oscillator.release,
-			volume: oscillator.volume
+			volume: oscillator.volume,
+			octave: oscillator.octave
 		}
 		return options;
 	});
@@ -262,7 +263,7 @@ var app = function() {
 	// var presets = [{}, {}];
 	var jsonString = localStorage.getItem('presets');
 	var presets = JSON.parse(jsonString);
-	if (!presets) presets = [{}, {}];
+	if (!presets) presets = [{}, {}, {}, {}];
 	setUpSynths(presets, ctx);
 
 	var saveButton = document.getElementById('save');
