@@ -48,13 +48,18 @@ var attachOscillatorToUI = function(idOfUI, oscillator) {
 	
 }
 
-var createBanner = function() {
+var createBanner = function(synthContainer, oscillator) {
 	var banner = document.createElement('div');
 	banner.classList.add('banner');
 	var h1 = document.createElement('h1');
 	h1.innerHTML = "Oscillator";
 	var button1 = document.createElement('button');
 	button1.innerHTML = "X";
+	button1.addEventListener('click', function() {
+		var index = allOscillators.indexOf(oscillator);
+		if (index > -1) allOscillators.splice(index, 1);
+		document.body.removeChild(synthContainer);
+	})
 	var button2 = document.createElement('button');
 	button2.innerHTML = "|";
 
@@ -207,7 +212,7 @@ var SynthUIFactory = (function() {
 		var synthContainer = document.createElement('div');
 		synthContainer.id = "synth-" + synthNum;
 		synthContainer.classList.add('synth-container');
-		var banner = createBanner();
+		var banner = createBanner(synthContainer, oscillator);
 		var controls = createControls();
 
 		synthContainer.appendChild(banner);
@@ -223,7 +228,7 @@ var SynthUIFactory = (function() {
 
 var createOscillatorWithUI = function(options) {
 	var oscillator = new Oscillator(options);
-	var oscUI = SynthUIFactory.createUI();
+	var oscUI = SynthUIFactory.createUI(oscillator);
 	document.body.appendChild(oscUI);
 	attachOscillatorToUI(oscUI.id, oscillator);
 	allOscillators.push(oscillator);
@@ -268,6 +273,8 @@ var app = function() {
 
 	var saveButton = document.getElementById('save');
 	saveButton.addEventListener('click', handleSave);
+	var addButton = document.getElementById('add-oscillator');
+	addButton.addEventListener('click', function() {createOscillatorWithUI({})});
 	window.addEventListener('keydown', handleKeyDown);
 	window.addEventListener('keyup', handleKeyUp);
 }
